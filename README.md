@@ -1,59 +1,107 @@
-# Open Lovable
+# Lovable - تطبيق بناء التطبيقات بالذكاء الاصطناعي
 
-Chat with AI to build React apps instantly. An example app made by the [Firecrawl](https://firecrawl.dev/?ref=open-lovable-github) team. For a complete cloud solution, check out [Lovable.dev ❤️](https://lovable.dev/).
+تطبيق Lovable هو منصة حديثة لبناء التطبيقات والمواقع الإلكترونية من خلال الدردشة مع الذكاء الاصطناعي. تم تصميمه ليطابق بدقة الصور المرجعية المطلوبة مع واجهة مستخدم عصرية وجذابة.
 
-<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZtaHFleGRsMTNlaWNydGdianI4NGQ4dHhyZjB0d2VkcjRyeXBucCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZFVLWMa6dVskQX0qu1/giphy.gif" alt="Open Lovable Demo" width="100%"/>
+## ✨ المميزات
 
+- **واجهة مستخدم حديثة** - تصميم داكن مع تدرجات لونية جميلة
+- **صفحة رئيسية تفاعلية** - مع حقل إدخال كبير للدردشة مع AI
+- **صفحة المجتمع** - عرض قوالب المشاريع من المجتمع
+- **واجهة الدردشة** - مع مؤشرات التحميل والإعدادات
+- **صفحة المشروع** - عرض محتوى المشروع باللغة العربية
+- **صفحة الإعدادات** - إدارة المشروع والمساحة العمل
+- **تصميم متجاوب** - يعمل على جميع الأجهزة
 
+## 🎨 التصميم
 
-## Setup
+تم تصميم التطبيق ليطابق بدقة الصور المرجعية المطلوبة:
 
-1. **Clone & Install**
+- **الألوان الدقيقة**: استخدام قيم RGB/HEX المطابقة للتصميم الأصلي
+- **التدرجات اللونية**: خلفيات متدرجة من الأزرق إلى البرتقالي
+- **الخطوط والأحجام**: خطوط Sans-serif حديثة بأحجام متناسقة
+- **المسافات والهوامش**: تخطيط نظيف مع مسافات متوازنة
+- **الظلال والتأثيرات**: تصميم مسطح مع تأثيرات بصرية خفيفة
+
+## 🚀 التشغيل
+
+### المتطلبات
+
+- Node.js 18+ 
+- npm أو pnpm
+
+### التثبيت
+
 ```bash
-git clone https://github.com/mendableai/open-lovable.git
-cd open-lovable
+# تثبيت التبعيات
 npm install
-```
+# أو
+pnpm install
 
-2. **Add `.env.local`**
-```env
-# Required
-E2B_API_KEY=your_e2b_api_key  # Get from https://e2b.dev (Sandboxes)
-FIRECRAWL_API_KEY=your_firecrawl_api_key  # Get from https://firecrawl.dev (Web scraping)
-
-# Optional (need at least one AI provider)
-ANTHROPIC_API_KEY=your_anthropic_api_key  # Get from https://console.anthropic.com
-OPENAI_API_KEY=your_openai_api_key  # Get from https://platform.openai.com (GPT-5)
-GEMINI_API_KEY=your_gemini_api_key  # Get from https://aistudio.google.com/app/apikey
-GROQ_API_KEY=your_groq_api_key  # Get from https://console.groq.com (Fast inference - Kimi K2 recommended)
-```
-
-3. **Run**
-```bash
+# تشغيل التطبيق في وضع التطوير
 npm run dev
+# أو
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+### البناء للنشر
 
-## Deploy on Cloudflare Pages
-
-1. Set environment variables in Pages project settings:
-   - `E2B_API_KEY`, `FIRECRAWL_API_KEY`
-   - At least one of: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GROQ_API_KEY`
-   - `NEXT_PUBLIC_APP_URL` pointing to your Pages domain
-
-2. Build settings in Cloudflare Pages:
-   - Build command: `npx @cloudflare/next-on-pages`
-   - Output directory: `.vercel/output/static`
-
-3. Local preview:
 ```bash
+# بناء التطبيق
+npm run build
+
+# بناء للتطبيق متوافق مع Cloudflare Pages
 npm run build:cf
-npx wrangler pages dev .vercel/output/static --compatibility-date=2025-01-30
 ```
 
-API routes run on the Edge runtime via Next.js on Pages.
+## 🌐 النشر على Cloudflare Pages
 
-## License
+التطبيق مُعد للعمل مع Cloudflare Pages:
 
-MIT
+1. **بناء التطبيق**:
+   ```bash
+   npm run build:cf
+   ```
+
+2. **معاينة محلية**:
+   ```bash
+   npm run preview:cf
+   ```
+
+3. **النشر**: رفع مجلد `.vercel/output/static` إلى Cloudflare Pages
+
+## 📱 الصفحات المتاحة
+
+- **الصفحة الرئيسية** (`/`) - واجهة الترحيب وحقل الدردشة
+- **المجتمع** (`/community`) - قوالب المشاريع من المجتمع
+- **الدردشة** (`/chat`) - واجهة الدردشة مع AI
+- **المشروع** (`/project`) - عرض محتوى المشروع
+- **الإعدادات** (`/settings`) - إدارة المشروع والإعدادات
+
+## 🛠️ التقنيات المستخدمة
+
+- **Next.js 15** - إطار العمل الأساسي
+- **React 19** - مكتبة واجهة المستخدم
+- **Tailwind CSS** - إطار العمل للتصميم
+- **Lucide React** - مكتبة الأيقونات
+- **TypeScript** - لغة البرمجة
+- **Cloudflare Pages** - منصة النشر
+
+## 🎯 التوافق
+
+- ✅ متوافق مع Cloudflare Pages
+- ✅ تصميم متجاوب للجوال
+- ✅ دعم اللغة العربية (RTL)
+- ✅ وضع داكن افتراضي
+- ✅ أداء عالي وسريع
+
+## 📄 الترخيص
+
+هذا المشروع مرخص تحت رخصة MIT.
+
+## 🤝 المساهمة
+
+نرحب بالمساهمات! يرجى إنشاء Issue أو Pull Request للمساهمة في تطوير التطبيق.
+
+---
+
+**Lovable** - بناء التطبيقات بالذكاء الاصطناعي أصبح أسهل من أي وقت مضى! 🚀

@@ -1,65 +1,88 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Heart, Plus, Globe, ArrowUp, Upload, FileText, Code, ChevronDown } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 
-export default function Page() {
-	const [status, setStatus] = useState<{ ok: boolean; detail?: any } | null>(null);
+export default function HomePage() {
+  return (
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-[#2C3040] via-[#504060] to-[#F07060] pt-16">
+        {/* Header Section */}
+        <div className="text-center pt-20 pb-16 px-6">
+          <h1 className="text-5xl font-bold text-white mb-4">
+            Build something Lovable
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Create apps and websites by chatting with AI
+          </p>
+        </div>
 
-	useEffect(() => {
-		let mounted = true;
-		(async () => {
-			try {
-				const res = await fetch('/api/health', { cache: 'no-store' });
-				const json = await res.json();
-				if (mounted) setStatus({ ok: json.success === true, detail: json });
-			} catch (e) {
-				if (mounted) setStatus({ ok: false, detail: { error: (e as Error).message } });
-			}
-		})();
-		return () => { mounted = false };
-	}, []);
+        {/* Main Chat Input */}
+        <div className="max-w-4xl mx-auto px-6 mb-12">
+          <div className="bg-[#2C2C2C] rounded-3xl p-6 shadow-lg">
+            <div className="flex items-center mb-4">
+              <input
+                type="text"
+                placeholder="Ask Lovable to create a blog about..."
+                className="flex-1 bg-transparent text-white placeholder-gray-400 text-lg outline-none"
+              />
+            </div>
+            
+            {/* Control Bar */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <button className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors">
+                  <Plus className="w-5 h-5 text-white" />
+                </button>
+                <button className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors">
+                  <Globe className="w-5 h-5 text-white" />
+                </button>
+              </div>
+              
+              <button className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <ArrowUp className="w-6 h-6 text-gray-700" />
+              </button>
+            </div>
+          </div>
+        </div>
 
-	return (
-		<main className="min-h-screen bg-gray-50 text-gray-900">
-			<section className="mx-auto max-w-3xl px-6 py-16 grid gap-6 place-items-center text-center">
-				<div>
-					<h1 className="text-3xl sm:text-5xl font-semibold tracking-tight">Open Lovable</h1>
-					<p className="mt-4 text-sm sm:text-base text-gray-600">
-						Production deployment is active on Cloudflare Pages (Edge).
-					</p>
-					<div className="mt-5 inline-flex items-center gap-3 text-xs sm:text-sm text-gray-600 justify-center">
-						<span className={"inline-flex h-2.5 w-2.5 rounded-full " + (status?.ok ? 'bg-emerald-500' : 'bg-amber-500')} />
-						<span className="font-medium">{status ? (status.ok ? 'All systems operational' : 'Partial configuration') : 'Checking status...'}</span>
-					</div>
-				</div>
+        {/* Option Buttons */}
+        <div className="max-w-4xl mx-auto px-6 mb-16">
+          <div className="flex justify-center space-x-6">
+            <button className="bg-[#2C2C2C] hover:bg-gray-700 transition-colors rounded-xl px-6 py-4 flex items-center space-x-3">
+              <Upload className="w-5 h-5 text-white" />
+              <span className="text-white font-medium">File uploader</span>
+            </button>
+            
+            <button className="bg-[#2C2C2C] hover:bg-gray-700 transition-colors rounded-xl px-6 py-4 flex items-center space-x-3">
+              <FileText className="w-5 h-5 text-white" />
+              <span className="text-white font-medium">Markdown editor</span>
+            </button>
+            
+            <button className="bg-[#2C2C2C] hover:bg-gray-700 transition-colors rounded-xl px-6 py-4 flex items-center space-x-3">
+              <Code className="w-5 h-5 text-white" />
+              <span className="text-white font-medium">Hacker</span>
+            </button>
+          </div>
+        </div>
 
-				<div className="mt-8 grid gap-3 w-full sm:w-auto">
-					<div className="rounded-lg border bg-white/60 p-4 text-left">
-						<p className="text-sm font-medium text-gray-800">Live Health</p>
-						<pre className="mt-2 max-h-48 overflow-auto rounded bg-gray-900 p-3 text-left text-xs text-gray-100">
-							{status?.detail ? JSON.stringify(status.detail, null, 2) : 'Loading...'}
-						</pre>
-					</div>
-
-					<div className="flex flex-col sm:flex-row items-center gap-3">
-						<a
-							href="/api/health"
-							className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800 transition"
-						>
-							Open Health JSON
-						</a>
-						<a
-							href="https://github.com/ai-hub-2/open-lovable"
-							target="_blank"
-							rel="noreferrer"
-							className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 hover:bg-white/60 transition"
-						>
-							View Repository
-						</a>
-					</div>
-				</div>
-			</section>
-		</main>
-	);
+        {/* Community Section */}
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-white">From the Community</h2>
+            <button className="text-white hover:text-gray-300 transition-colors">
+              View All
+            </button>
+          </div>
+          
+          {/* Community Content Placeholder */}
+          <div className="text-center text-gray-300 py-12">
+            <p>Community projects will appear here</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
